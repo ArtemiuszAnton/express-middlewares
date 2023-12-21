@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllUser, getUserById, createNewUser } = require('../service/user.service')
+const { getAllUser, getUserById, createNewUser, updateUser, deleteUser, changeName } = require('../service/user.service')
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
@@ -31,5 +31,40 @@ router.post('/', (req, res) => {
     }
 })
 
+router.put('/:id', (req, res) => {
+    try {
+        const { name, surname, email, pwd } = req.body;
+        const { id } = req.params
+        const updateData = updateUser(id, name, surname, email, pwd)
+        res.status(200).send(updateData)
+    } catch (er) {
+        res.status(404).send(er.message)
+
+    }
+})
+
+router.delete('/:id', (req, res) => {
+    try {
+        const { id } = req.params
+        const delUser = deleteUser(id);
+        res.status(200).send(delUser)
+
+    } catch (er) {
+        res.status(404).send(er.message)
+
+    }
+})
+
+router.patch('/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const body = req.body;
+        const changetName = changeName(id, body)
+        res.status(200).send(changetName)
+
+    } catch (er) {
+        res.status(404).send(er.message)
+    }
+})
 
 module.exports = { router } 
