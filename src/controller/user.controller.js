@@ -42,7 +42,6 @@ router.put('/:id', isValidUser, isValidUserId, (req, res) => {
         res.status(200).send(updateData)
     } catch (er) {
         res.status(404).send(er.message)
-
     }
 })
 
@@ -51,7 +50,6 @@ router.delete('/:id', isValidUserId, (req, res) => {
         const { id } = req.params
         const delUser = deleteUser(id);
         res.status(200).send(delUser)
-
     } catch (er) {
         res.status(404).send(er.message)
 
@@ -64,7 +62,6 @@ router.patch('/:id', isValidUserId, (req, res) => {
         const body = req.body;
         const changetName = changeName(id, body)
         res.status(200).send(changetName)
-
     } catch (er) {
         res.status(404).send(er.message)
     }
