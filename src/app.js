@@ -4,7 +4,6 @@ const { router } = require('./controller/user.controller')
 const app = express();
 
 app.use(bodyParser.json());
-// app.use(express.json())
 
 app.use('/user', router)
 
