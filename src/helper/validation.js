@@ -19,7 +19,7 @@ function isValidUser(req, res, next) {
 }
 
 function isValidUserId(req, res, next) {
-    if (!req.params.hasOwnProperty('id')) throw new Error('отсутствует id');
+    if (!req.params.hasOwnProperty('id')) throw new Error('id not found');
     const { id } = req.params;
     if (id < 0) throw new Error('id отрицательный');
     if (typeof (id) != 'number' && typeof (id) != 'string') throw new Error('type id not correct');
