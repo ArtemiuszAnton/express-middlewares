@@ -3,9 +3,7 @@ const { getAllUser, getUserById, createNewUser, updateUser, deleteUser, changeNa
 const { isValidUser, isValidUserId } = require('../helper/validation')
 const router = express.Router();
 
-
-
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
     try {
         res.status(200).send(getAllUser())
     } catch (er) {

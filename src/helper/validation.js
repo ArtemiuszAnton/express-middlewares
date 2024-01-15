@@ -1,4 +1,4 @@
-function isValidUser(req, res, next) {
+function isValidUser(req, _res, next) {
     if (!req.body.hasOwnProperty('name')) throw new Error('name отсутствует');
     if (!req.body.hasOwnProperty('surname')) throw new Error('surname отсутствует');
     if (!req.body.hasOwnProperty('email')) throw new Error('email отсутствует');
@@ -18,7 +18,7 @@ function isValidUser(req, res, next) {
     next()
 }
 
-function isValidUserId(req, res, next) {
+function isValidUserId(req, _res, next) {
     if (!req.params.hasOwnProperty('id')) throw new Error('id not found');
     const { id } = req.params;
     if (id < 0) throw new Error('id отрицательный');
